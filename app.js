@@ -22,6 +22,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// set up db connection
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://noteeApp:noteeApp@localhost:27017/notee');
+console.log('mongo connected')
+
 app.use('/', routes);
 app.use('/notes', notes);
 
