@@ -1,0 +1,21 @@
+{
+  "name": "notee",
+  "version": "0.0.0",
+  "authors": [
+    "Jan Koeppen <jan@yaneq.com>"
+  ],
+  "description": "simple note app",
+  "main": "./bin/www",
+  "license": "MIT",
+  "homepage": "yaneq.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.0"
+  }
+}
