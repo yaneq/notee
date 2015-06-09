@@ -10,6 +10,25 @@ var notes = require('./routes/notes');
 
 var app = express();
 
+// Config
+var env = process.env.NODE_ENV || 'development';
+console.log('Starting notee in "' + env + '" environment');
+
+// set up db connection
+var mongoose = require('mongoose');
+var dbConString = '';
+
+if (env === 'development') {
+  dbConString = 'mongodb://noteeApp:noteeApp@localhost:27017/notee';
+}
+
+if (env === 'production') {
+  dbConString = process.env.MONGOLAB_URI;
+}
+
+mongoose.connect(dbConString);
+console.log('mongo connected');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -22,11 +41,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/static',  express.static(__dirname + '/bower_components'));
-
-// set up db connection
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://noteeApp:noteeApp@localhost:27017/notee');
-console.log('mongo connected')
 
 app.use('/', routes);
 app.use('/notes', notes);
