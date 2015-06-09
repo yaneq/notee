@@ -21,6 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/static',  express.static(__dirname + '/bower_components'));
 
 // set up db connection
 var mongoose = require('mongoose');

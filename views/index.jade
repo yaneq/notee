@@ -1,5 +1,28 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  #container.container
+    .row
+      .col-sm-12
+        h1 notee
+        ul.list-unstyled
+          li(ng-repeat='note in notes')
+            .row
+              .col-sm-4
+                | {{note.text}}
+              .col-sm-2
+                .btn.btn-link(ng-click='deleteNote(note)') delete
+        input.form-control(
+          ng-model='text'
+          ng-keypress="$event.which === 13 ? saveNote() : null"
+        )
+        button.btn.btn-primary(
+          ng-click='saveNote()'
+        ) Save
+
+block scripts
+  script(src="/javascripts/utilities/request-transformers.js")
+  script(src="/javascripts/controllers/main-controller.js")
+  script(src="/javascripts/services/note.js")
+
+
