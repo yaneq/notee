@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "postinstall": "bower install"
     "start": "node ./bin/www"
   },
   "dependencies": {
@@ -15,6 +16,5 @@
     "mongoose": "^4.0.4",
     "morgan": "~1.5.3",
     "serve-favicon": "~2.2.1"
-  },
-  "postinstall": "bower install"
+  }
 }
