@@ -2,7 +2,6 @@ var express = require('express');
 var mongoose = require('mongoose');
 var router = express.Router();
 
-//var db = require('mongoskin').db('mongodb://noteeApp:noteeApp@localhost:27017/notee');
 var Note = mongoose.model('Note', { text: String });
 
 router.delete('/:id', function(req, res, next) {
