@@ -11,9 +11,11 @@ module.controller('mainController', ['$scope', 'Note', function($scope, Note) {
   $scope.saveNote = function() {
     console.log('save note');
     var note = new Note({text: $scope.text});
-    note.$save();
+    note.$save(function() {
+      $scope.reloadNotes();
+    });
     $scope.text = '';
-    $scope.reloadNotes();
+
   };
 
   $scope.deleteNote = function(note) {
