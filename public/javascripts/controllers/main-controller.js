@@ -17,8 +17,9 @@ module.controller('mainController', ['$scope', 'Note', function($scope, Note) {
   };
 
   $scope.deleteNote = function(note) {
-    Note.delete({id: note._id});
-    $scope.reloadNotes();
+    Note.delete({id: note._id}, function() {
+      $scope.reloadNotes();
+    });
   };
 
   $scope.reloadNotes();
