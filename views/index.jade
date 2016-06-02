@@ -13,10 +13,10 @@ block content
         ul.note-list.list-unstyled
           li.line(ng-repeat='note in notes')
             .row
-              .col-sm-4
+              .col-sm-10
                 tagged-text(text='note.text')
               .col-sm-2
-                a(ng-click='deleteNote(note)',href='') delete
+                a.pull-right(ng-click='deleteNote(note)',href='') delete
         input.form-control(
           ng-model='text'
           ng-keypress="$event.which === 13 ? saveNote() : null"
