@@ -6,6 +6,7 @@
     "start": "node ./bin/www",
     "postinstall": "./node_modules/bower/bin/bower install"
   },
+  "engines": { "node": "v5.8.0" },
   "dependencies": {
     "body-parser": "~1.12.4",
     "bower": "^1.4.1",
