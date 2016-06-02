@@ -1,4 +1,12 @@
-var module = angular.module('notee', ['models.note', 'notee.directives']);
+var module = angular.module('notee', [
+  'models.note',
+  'notee.directives.taggedText',
+  'notee.directives.tag'
+]);
+
+module.config(function($sceProvider) {
+  $sceProvider.enabled(false);
+});
 
 module.controller('mainController', ['$scope', 'Note', function($scope, Note) {
 
@@ -23,6 +31,11 @@ module.controller('mainController', ['$scope', 'Note', function($scope, Note) {
       $scope.reloadNotes();
     });
   };
+
+  $scope.$on('tagClicked', function(event, tag) {
+    $scope.query = tag;
+    $scope.reloadNotes();
+  });
 
   $scope.reloadNotes();
 }]);

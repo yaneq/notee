@@ -7,9 +7,10 @@ a {
   color: #00B7FF;
 }
 
-.tag {
+tag {
   color: #00B7FF;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .note-list .line {
