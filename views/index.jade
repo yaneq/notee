@@ -4,7 +4,12 @@ block content
   #container.container
     .row
       .col-sm-12
-        h1 notee
+        .row
+          .col-sm-5
+            h1 notee
+          .col-sm-5
+            label.control-label Filter:
+            input.form-control(ng-model='query',ng-keyup='reloadNotes()')
         ul.note-list.list-unstyled
           li.line(ng-repeat='note in notes')
             .row

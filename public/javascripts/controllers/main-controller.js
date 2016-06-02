@@ -3,7 +3,7 @@ var module = angular.module('notee', ['models.note', 'notee.directives']);
 module.controller('mainController', ['$scope', 'Note', function($scope, Note) {
 
   $scope.reloadNotes = function() {
-    Note.query().$promise.then(function (notes) {
+    Note.query({q: $scope.query}).$promise.then(function (notes) {
       $scope.notes = notes;
     });
   };
