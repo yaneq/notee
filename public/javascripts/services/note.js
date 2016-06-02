@@ -1,7 +1,7 @@
 var module = angular.module('models.note',['ngResource']);
 
 module.factory('Note', ['$resource', function($resource) {
-  return $resource('/notes/:id', {}, {
+  return $resource('/api/notes/:id', {}, {
     query: {
       method: 'GET',
       isArray: true,

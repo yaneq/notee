@@ -44,7 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/static',  express.static(__dirname + '/bower_components'));
 
 app.use('/', routes);
-app.use('/notes', notes);
+app.use('/api/notes', notes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
