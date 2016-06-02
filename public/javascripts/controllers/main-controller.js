@@ -1,4 +1,4 @@
-var module = angular.module('notee', ['models.note']);
+var module = angular.module('notee', ['models.note', 'notee.directives']);
 
 module.controller('mainController', ['$scope', 'Note', function($scope, Note) {
 

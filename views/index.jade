@@ -5,13 +5,13 @@ block content
     .row
       .col-sm-12
         h1 notee
-        ul.list-unstyled
-          li(ng-repeat='note in notes')
+        ul.note-list.list-unstyled
+          li.line(ng-repeat='note in notes')
             .row
               .col-sm-4
-                | {{note.text}}
+                tagged-text(text='note.text')
               .col-sm-2
-                .btn.btn-link(ng-click='deleteNote(note)') delete
+                a(ng-click='deleteNote(note)',href='') delete
         input.form-control(
           ng-model='text'
           ng-keypress="$event.which === 13 ? saveNote() : null"
@@ -24,5 +24,6 @@ block scripts
   script(src="/javascripts/utilities/request-transformers.js")
   script(src="/javascripts/controllers/main-controller.js")
   script(src="/javascripts/services/note.js")
+  script(src="/javascripts/directives/tagged-text.js")
 
 
