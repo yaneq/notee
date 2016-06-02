@@ -2,14 +2,12 @@ extends layout
 
 block content
   #container.container
+    h1 notee
     .row
-      .col-sm-12
-        .row
-          .col-sm-5
-            h1 notee
-          .col-sm-5
-            label.control-label Filter:
-            input.form-control(ng-model='query',ng-keyup='reloadNotes()')
+      .col-sm-2
+        label.control-label Filter:
+        input.form-control(ng-model='query',ng-keyup='reloadNotes()')
+      .col-sm-10
         ul.note-list.list-unstyled
           li.line(ng-repeat='note in notes')
             .row
@@ -17,13 +15,16 @@ block content
                 tagged-text(text='note.text')
               .col-sm-2
                 a.pull-right(ng-click='deleteNote(note)',href='') delete
-        input.form-control(
-          ng-model='text'
-          ng-keypress="$event.which === 13 ? saveNote() : null"
-        )
-        button.btn.btn-primary(
-          ng-click='saveNote()'
-        ) Save
+        .row
+          .col-sm-11
+            input.form-control(
+              ng-model='text'
+              ng-keypress="$event.which === 13 ? saveNote() : null"
+            )
+          .col-sm-1
+            button.btn.btn-primary.pull-right(
+              ng-click='saveNote()'
+            ) Save
 
 block scripts
   script(src="/javascripts/utilities/request-transformers.js")
