@@ -1,8 +1,14 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 var router = express.Router();
 
-var Note = mongoose.model('Note', { text: String, tags: [String] });
+
+var noteSchema = new Schema(
+  { text: String, tags: [String] },
+  { timestamps: true }
+);
+var Note = mongoose.model('Note', noteSchema);
 
 router.delete('/:id', function(req, res, next) {
   console.log('delete');
