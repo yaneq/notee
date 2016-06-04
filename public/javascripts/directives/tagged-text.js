@@ -7,7 +7,7 @@ module.directive('taggedText', function ($compile) {
     },
     link: function (scope, element, attrs, controllers) {
       if (scope.text) {
-        element.append(scope.text.replace(/(#\S+)/, '<tag>$1</tag>'));
+        element.append(scope.text.replace(/(#\S+)/g, '<tag>$1</tag>'));
         $compile(element)(scope);
       }
     }
