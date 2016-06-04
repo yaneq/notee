@@ -10,15 +10,39 @@ module.config(function($sceProvider) {
 
 module.controller('mainController', ['$scope', 'Note', function($scope, Note) {
 
+  $scope.query = '';
+  $scope.filters = {
+    tags: []
+  };
+  $scope.allTags = [];
+
+  $scope.extractTags = function (notes) {
+    tags = notes.map(function (note) { return note.tags });
+    tags = [].concat.apply([], tags);
+    return _.uniq(tags);
+  };
+
+  $scope.buildQuery = function (query, filters) {
+    return {
+      query: query,
+      "tags[]": filters.tags
+    };
+  };
+
   $scope.reloadNotes = function() {
-    Note.query({q: $scope.query}).$promise.then(function (notes) {
+    var queryParams = $scope.buildQuery($scope.query, $scope.filters);
+    console.log(queryParams);
+    Note.query(queryParams).$promise.then(function (notes) {
       $scope.notes = notes;
+      $scope.allTags = $scope.extractTags(notes);
     });
   };
 
   $scope.saveNote = function() {
     console.log('save note');
-    var note = new Note({text: $scope.text});
+    var note = new Note({
+      text: $scope.text
+    });
     note.$save(function() {
       $scope.reloadNotes();
     });
@@ -33,7 +57,7 @@ module.controller('mainController', ['$scope', 'Note', function($scope, Note) {
   };
 
   $scope.$on('tagClicked', function(event, tag) {
-    $scope.query = tag;
+    $scope.filters.tags = [tag];
     $scope.reloadNotes();
   });
 

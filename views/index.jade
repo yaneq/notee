@@ -7,6 +7,17 @@ block content
       .col-sm-2
         label.control-label Filter:
         input.form-control(ng-model='query',ng-keyup='reloadNotes()')
+
+        h3 Filters
+        ul.list-unstyled
+          li(ng-repeat='tag in filters.tags')
+            tag {{tag}}
+        a(href='' ng-click='filters.tags=[];reloadNotes()') clear
+
+        h3 Tags
+        ul.list-unstyled
+          li(ng-repeat='tag in allTags')
+            tag {{tag}}
       .col-sm-10
         ul.note-list.list-unstyled
           li.line(ng-repeat='note in notes')
