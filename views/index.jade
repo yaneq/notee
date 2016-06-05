@@ -25,19 +25,19 @@ block content
 
             li.line(ng-repeat='note in entries')
               .row
-                .col-sm-1
+                .col-xs-2
                   span(ng-bind='note.createdAt | amDateFormat:"H:mm"')
-                .col-sm-9
+                .col-xs-8
                   tagged-text(text='note.text')
-                .col-sm-2
+                .col-xs-2
                   a.pull-right(ng-click='deleteNote(note)',href='') delete
         .row
-          .col-sm-11
+          .col-xs-8
             input.form-control(
               ng-model='text'
               ng-keypress="$event.which === 13 ? saveNote() : null"
             )
-          .col-sm-1
+          .col-xs-4
             button.btn.btn-primary.pull-right(
               ng-click='saveNote()'
             ) Save
