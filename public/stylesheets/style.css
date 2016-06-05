@@ -16,3 +16,8 @@ tag {
 .note-list .line {
   line-height: 1.8em;
 }
+
+.date-header {
+  font-weight: bold;
+  margin-bottom: 7px;
+}

@@ -16,10 +16,17 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.5.x",
     "bootstrap": "~3.3.4",
+    "angular": "~1.5.x",
     "angular-sanitize": "~1.5.x",
     "angular-resource": "~1.5.x",
-    "lodash": "^4.13.1"
+    "angular-moment": "^0.10.3",
+    "lodash": "^4.13.1",
+    "moment": "^2.13.0",
+    "angular-filter": "^0.5.8"
+  },
+  "resolutions": {
+    "moment": "^2.13.0",
+    "angular": "~1.5.x"
   }
 }

@@ -7,7 +7,8 @@ module.factory('Note', ['$resource', function($resource) {
       isArray: true,
       transformResponse: [
         angular.fromJson,
-        requestTransformers.pluckData
+        requestTransformers.pluckData,
+        requestTransformers.timestampsToDate
       ]
     },
     save: {

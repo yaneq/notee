@@ -1,14 +1,18 @@
 var module = angular.module('notee', [
   'models.note',
   'notee.directives.taggedText',
-  'notee.directives.tag'
+  'notee.directives.tag',
+  'angularMoment',
+  'angular.filter'
 ]);
 
 module.config(function($sceProvider) {
   $sceProvider.enabled(false);
 });
 
-module.controller('mainController', ['$scope', 'Note', function($scope, Note) {
+module.controller('mainController',
+  ['$scope', 'Note',
+    function($scope, Note) {
 
   $scope.query = '';
   $scope.filters = {
@@ -31,7 +35,6 @@ module.controller('mainController', ['$scope', 'Note', function($scope, Note) {
 
   $scope.reloadNotes = function() {
     var queryParams = $scope.buildQuery($scope.query, $scope.filters);
-    console.log(queryParams);
     Note.query(queryParams).$promise.then(function (notes) {
       $scope.notes = notes;
       $scope.allTags = $scope.extractTags(notes);
